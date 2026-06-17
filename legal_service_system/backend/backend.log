@@ -1,0 +1,499 @@
+INFO:     Started server process [6716]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60633 - "POST /api/v1/users/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\clsregistry.py", line 516, in _resolve_name
+    rval = d[token]
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\util\_collections.py", line 340, in __missing__
+    self[key] = val = self.creator(key)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\clsregistry.py", line 484, in _access_cls
+    return self.fallback[key]
+KeyError: 'DocumentChunk'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\legal_service_system\backend\app\api\v1\user.py", line 90, in login
+    user = db.query(User).filter(User.username == username).first()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\session.py", line 2941, in query
+    return self._query_cls(entities, self, **kwargs)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\sql\coercions.py", line 389, in expect
+    insp._post_inspect
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\util\langhelpers.py", line 1235, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2733, in _post_inspect
+    self._check_configure()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2410, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4227, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4268, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2427, in _post_configure_properties
+    prop.init()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\interfaces.py", line 595, in init
+    self.do_init()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\relationships.py", line 1655, in do_init
+    self._setup_entity()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\relationships.py", line 1865, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\clsregistry.py", line 520, in _resolve_name
+    self._raise_for_name(name, err)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Document(document)], expression 'DocumentChunk' failed to locate a name ('DocumentChunk'). If this is a class name, consider adding this relationship() to the <class 'app.models.document.Document'> class after both dependent classes have been defined.
+INFO:     127.0.0.1:59648 - "POST /api/v1/users/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\legal_service_system\backend\app\api\v1\user.py", line 90, in login
+    user = db.query(User).filter(User.username == username).first()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\session.py", line 2941, in query
+    return self._query_cls(entities, self, **kwargs)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\sql\coercions.py", line 389, in expect
+    insp._post_inspect
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\util\langhelpers.py", line 1235, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2733, in _post_inspect
+    self._check_configure()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2410, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4227, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4264, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Document(document)]'. Original exception was: When initializing mapper Mapper[Document(document)], expression 'DocumentChunk' failed to locate a name ('DocumentChunk'). If this is a class name, consider adding this relationship() to the <class 'app.models.document.Document'> class after both dependent classes have been defined.
+INFO:     127.0.0.1:62813 - "POST /api/v1/users/register HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\legal_service_system\backend\app\api\v1\user.py", line 27, in register
+    if db.query(User).filter(User.username == username).first():
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\session.py", line 2941, in query
+    return self._query_cls(entities, self, **kwargs)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\sql\coercions.py", line 389, in expect
+    insp._post_inspect
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\util\langhelpers.py", line 1235, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2733, in _post_inspect
+    self._check_configure()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2410, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4227, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4264, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Document(document)]'. Original exception was: When initializing mapper Mapper[Document(document)], expression 'DocumentChunk' failed to locate a name ('DocumentChunk'). If this is a class name, consider adding this relationship() to the <class 'app.models.document.Document'> class after both dependent classes have been defined.
+INFO:     127.0.0.1:51005 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51012 - "POST /api/v1/users/register HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\legal_service_system\backend\app\api\v1\user.py", line 27, in register
+    if db.query(User).filter(User.username == username).first():
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\session.py", line 2941, in query
+    return self._query_cls(entities, self, **kwargs)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\sql\coercions.py", line 389, in expect
+    insp._post_inspect
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\util\langhelpers.py", line 1235, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2733, in _post_inspect
+    self._check_configure()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2410, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4227, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4264, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Document(document)]'. Original exception was: When initializing mapper Mapper[Document(document)], expression 'DocumentChunk' failed to locate a name ('DocumentChunk'). If this is a class name, consider adding this relationship() to the <class 'app.models.document.Document'> class after both dependent classes have been defined.
+INFO:     127.0.0.1:51016 - "POST /api/v1/users/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\legal_service_system\backend\app\api\v1\user.py", line 90, in login
+    user = db.query(User).filter(User.username == username).first()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\session.py", line 2941, in query
+    return self._query_cls(entities, self, **kwargs)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\sql\coercions.py", line 389, in expect
+    insp._post_inspect
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\util\langhelpers.py", line 1235, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2733, in _post_inspect
+    self._check_configure()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2410, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4227, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4264, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Document(document)]'. Original exception was: When initializing mapper Mapper[Document(document)], expression 'DocumentChunk' failed to locate a name ('DocumentChunk'). If this is a class name, consider adding this relationship() to the <class 'app.models.document.Document'> class after both dependent classes have been defined.
+INFO:     127.0.0.1:51020 - "GET /api/v1/chat/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:51026 - "GET /api/v1/admin/stats HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:51144 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51150 - "POST /api/v1/users/register HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\legal_service_system\backend\app\api\v1\user.py", line 27, in register
+    if db.query(User).filter(User.username == username).first():
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\session.py", line 2941, in query
+    return self._query_cls(entities, self, **kwargs)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\sql\coercions.py", line 389, in expect
+    insp._post_inspect
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\util\langhelpers.py", line 1235, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2733, in _post_inspect
+    self._check_configure()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2410, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4227, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4264, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Document(document)]'. Original exception was: When initializing mapper Mapper[Document(document)], expression 'DocumentChunk' failed to locate a name ('DocumentChunk'). If this is a class name, consider adding this relationship() to the <class 'app.models.document.Document'> class after both dependent classes have been defined.
+INFO:     127.0.0.1:51156 - "POST /api/v1/users/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\fastapi\routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\legal_service_system\backend\app\api\v1\user.py", line 90, in login
+    user = db.query(User).filter(User.username == username).first()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\session.py", line 2941, in query
+    return self._query_cls(entities, self, **kwargs)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\sql\coercions.py", line 389, in expect
+    insp._post_inspect
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\util\langhelpers.py", line 1235, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2733, in _post_inspect
+    self._check_configure()
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 2410, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4227, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "D:\Anaconda\envs\ai-agent\lib\site-packages\sqlalchemy\orm\mapper.py", line 4264, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Document(document)]'. Original exception was: When initializing mapper Mapper[Document(document)], expression 'DocumentChunk' failed to locate a name ('DocumentChunk'). If this is a class name, consider adding this relationship() to the <class 'app.models.document.Document'> class after both dependent classes have been defined.
+INFO:     127.0.0.1:51162 - "GET /api/v1/chat/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:51166 - "GET /api/v1/admin/stats HTTP/1.1" 422 Unprocessable Entity
