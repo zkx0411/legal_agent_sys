@@ -13,5 +13,5 @@
     vector_store负责RAG相关的处理，从本地知识库检索信息
     search_agent联网搜索，是本地知识库未检索到时的保底机制
     agent_executor负责查询数据库内相关的信息
-
+<img width="1986" height="939" alt="8" src="https://github.com/user-attachments/assets/790de773-f4a4-42a3-81d4-d02e7abdd561" />
 ### 项目内的API_KEY已全部删去，如需使用请自行替换config.py以及.env内的值
